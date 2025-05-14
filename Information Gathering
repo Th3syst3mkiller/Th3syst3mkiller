@@ -1,0 +1,51 @@
+Robots.txt
+sitemap.xml
+Sitemap_index.html
+Kalı: 
+	host google.com
+	whatweb google.com
+	whois google.com
+	dnsrecon -d google.com (subdomain)
+	wafw00f -l
+	wafw00f google.com
+	dnsenum google.com
+	
+Web:
+	Httrack: website copy template (webhttrack)
+	Netcraft
+	DNSdumpster
+	Waybackmachine archive.org
+	Have I been pwned (passwords)
+
+Google dorks:
+	site:ine.com
+	site:*.ine.com
+	site:*.ine.com intile:admin
+	site:*.ine.com filetype:pdf
+	inurl:auth_user_file.txt
+	inurl:passwd.txt
+	intitle:"index of" "credentials"
+	
+	
+ip a s
+nmap -sn 192.168.100.0/24
+sudo netdiscover -i eth0 -r 192.168.100.0/24
+nmap -Pn -sV -O 
+
+-O: operating system
+-sV: version
+-Pn: windows
+-T5: aggresive scan
+-sC:
+-A: all
+-sn: same ping
+
+
+Assessment Methodologies: Information Gathering CTF 1
+
+
+dirb http://target.ine.local -w /usr/share/dirb/wordlists/big.txt -X .bak,.tar.gz,.zip,.sql,.bak.zip
+
+curl http://target.ine.local/wp-config.bak
+
+httrack http://target.ine.local -O target.html

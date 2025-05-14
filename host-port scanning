@@ -1,0 +1,38 @@
+ip a s
+nmap -sn 192.168.100.0/24 (network içindeki tüm hostlar)
+nmap -sn 192.168.100.50-100
+nmap -sn -iL targets.txt
+nmap -sn -PS 192.168.100.0/24
+sudo netdiscover -i eth0 -r 192.168.100.0/24
+nmap -Pn -sV -O 
+nmap -F 127.0.0.1
+nmap -sS -sV -sC -p- -T4
+
+
+-O: operating system
+-sV: version
+-Pn: windows
+-T5: aggresive scan
+-sC: otomatik script
+-A: os detection, version detection,script scan, traceroute
+-v: verbose
+-p-: all ports
+-sS: silent sessiz gizli tarama
+-sU: udp scan
+-sA: firewall detection
+-f: small packets
+-oX: xml result
+-O --osscan-guess: operating system kernel
+-sV --version-intensity 8 :port version scan
+
+
+ls -la /usr/share/nmap/scripts/
+ls -la /usr/share/nmap/scripts/ | grep -e "http"
+ls -la /usr/share/nmap/scripts/ | grep -e "drupal"
+nmap --script-help=mongodp-info
+nmap --script-help=memcached-info
+nmap -sS -sV --script=memcached-info -p-
+
+-http-enum.nse
+-http-drupal-enum.nse
+-http-drupal-enum-users.nse

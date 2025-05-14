@@ -1,0 +1,15 @@
+msfconsole
+
+workspace -a ftp_enum
+
+setg RHOSTS
+
+search portscan
+auxiliary/scanner/portscan/tcp
+
+search type:auxiliary name:ftp
+auxiliary/scanner/ftp/ftp_version
+
+auxiliary/scanner/ftp/ftp_login
+
+auxiliary/scanner/ftp/anonymous

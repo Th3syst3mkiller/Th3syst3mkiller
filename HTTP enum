@@ -1,0 +1,40 @@
+msfconsole
+
+workspace -a http_enum
+
+setg RHOSTS
+setg RHOST
+
+auxiliary/scanner/http/http_version
+
+auxiliary/scanner/http/http_header
+
+auxiliary/scanner/http/robots.txt
+
+auxiliary/scanner/http/dir_scanner
+/usr/share/metasploit-framework/data/wmap/wmap_dirs.txt
+
+auxiliary/scanner/http/files_dir
+/usr/share/metasploit-framework/data/wmap/wmap_dirs.txt
+
+auxiliary/scanner/http/http_login
+set AUTH_URI
+set PASS_FILE /usr/share/metasploit-framework/data/wordlists/http_default_pass.txt
+set PASS_FILE /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt
+set USER_FILE sert/usr/share/metasploit-framework/data/wordlists/http_default_users.txt
+set USER_FILE /usr/share/metasploit-framework/data/wordlists/namelist.txt
+
+set USER_AS_PASS /usr/share/metasploit-framework/data/wordlists/http_default_userpass.txt (GEREK YOK)
+
+set VERBOSE false
+
+
+auxiliary/scanner/http/apache_userdir_enum
+set USER_FILE /usr/share/metasploit-framework/data/wordlists/common_users.txt
+
+
+HFS rejetto HTTP File Server 2.3
+
+exploit/windows/http/rejetto_hfs_exec
+
+

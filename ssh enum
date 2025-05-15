@@ -1,0 +1,19 @@
+msfconsole
+
+workspace -a ssh_enum
+
+setg RHOSTS
+
+auxiliary/scanner/ssh/ssh_version
+
+auxiliary/scanner/ssh/ssh_login
+set USER_FILE /usr/share/metasploit-framework/data/wordlists/common_users.txt
+set PASS_FILE /usr/share/metasploit-framework/data/wordlists/common_passwords.txt
+set STOP_ON_SUCCESS true
+
+auxiliary/scanner/ssh/ssh_enumusers
+set USER_FILE /usr/share/metasploit-framework/data/wordlists/common_users.txt
+
+
+auxiliary/scanner/ssh/libssh_auth_bypass
+set SPAWN_PTY true

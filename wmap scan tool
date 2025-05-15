@@ -1,0 +1,25 @@
+msfconsole -q
+
+load wmap
+
+wmap_ -h
+
+wmap_sites -a 192.168.100.55
+
+wmap_targets -h
+
+wmap_targets -t 192.168.100.55
+
+wmap -l
+
+wmap_run -h
+
+wmap_run -t
+
+wmap_run -e
+
+
+auxiliary/scanner/http/options
+
+auxiliary/scanner/http/http_put
+set PATH /data/

